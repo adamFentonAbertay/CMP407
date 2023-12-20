@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="CMP407_WwiseProject" GUID="{7E549548-A605-49E1-AD36-101FA427E2AE}" Generator="2023.1.0.8367"/>
+	<CacheRoot>../../../../../CMP407_WwiseIntegrationTemp/CMP407_WwiseProject/.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Mac" GUID="{ADA4FDC2-0C8F-40B1-9271-7EAAF9CC2151}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="../../../../../CMP407_WwiseIntegrationTemp/CMP407_WwiseProject/GeneratedSoundBanks/Mac"/>
+		<Platform Name="Windows" GUID="{CA0CCE3F-19BB-41AE-ACC0-96E8D03DDCBB}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../../../CMP407_WwiseIntegrationTemp/CMP407_WwiseProject/GeneratedSoundBanks/Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{3D5A2E63-90B5-4C48-A5A6-13D19E804291}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{4929A387-2DD0-476C-DC3A-C77363F62002}</FileHash>
+</ProjectInfo>

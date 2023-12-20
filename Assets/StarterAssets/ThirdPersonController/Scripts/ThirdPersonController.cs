@@ -1,4 +1,5 @@
 ﻿ using UnityEngine;
+using UnityEngine.UI;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -75,6 +76,17 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
+        //ADAM
+        [Tooltip("For playing WWISE footstep on footstep func trigger")]
+        public AK.Wwise.Event footstepAK;
+
+        public int healthPoints;
+
+        public Slider healthSlider;
+
+        //ADAMEND
+
+        // public AkAmbient ambientFootstep;
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -97,6 +109,12 @@ namespace StarterAssets
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+
+        //ADAM
+
+        public AK.Wwise.RTPC healthLevelRTPC;
+
+        //ADAMEND
 
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
@@ -150,6 +168,8 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            
         }
 
         private void Update()
@@ -159,12 +179,30 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+           
         }
 
         private void LateUpdate()
         {
             CameraRotation();
         }
+
+        //ADAM
+        //Reduce players health and update Wwise RTPC to new health value
+        //if health below 0 to be set, set as 0
+        public void reducePlayerHealth(int reduceBy)
+        {
+            Debug.Log(healthPoints);
+            healthPoints -= reduceBy;
+            if (healthPoints < 0)
+            {
+                healthPoints = 0;
+            }
+            healthSlider.value = healthPoints;
+            healthLevelRTPC.SetGlobalValue(healthPoints);
+        }
+
+        //ADAMEND
 
         private void AssignAnimationIDs()
         {
@@ -373,6 +411,9 @@ namespace StarterAssets
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
+               //ADAM
+                AkSoundEngine.PostEvent(footstepAK.Id, gameObject);
+                //ADAMEND
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);

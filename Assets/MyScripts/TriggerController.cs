@@ -21,6 +21,7 @@ public class TriggerController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         
+        //working out which biome you came from and which you are now in
        
         if (other.GetComponent<MusicStatus>())
         {
@@ -39,6 +40,10 @@ public class TriggerController : MonoBehaviour
                 Debug.Log("type change error");
             }
 
+        }
+        else
+        {
+            Debug.Log("no music script detected");
         }
       
     }
